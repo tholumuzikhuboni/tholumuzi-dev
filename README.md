@@ -12,12 +12,10 @@ Welcome to the Tholumuzi Dev repository! Tholumuzi Dev provides solutions in Web
 ## Tech Stack
 
 - **Frontend**: HTML, CSS, Bootstrap, JavaScript
-- **Backend**: Node.js, Python, etc. (if applicable)
-- **Cybersecurity**: Various tools for securing applications and data.
 
 ## Demo
 
-Check out the live demo [here](#). (Add link if available)
+Check out the live demo [here](https://dev.tholumuzi.co.za). (Add link if available)
 
 ## Installation
 
