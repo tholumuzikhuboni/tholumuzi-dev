@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tholumuzi Dev</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Tholumuzi Dev provides solutions in Web Development, Software Development, Cybersecurity, and more.">
+  <meta name="keywords" content="Web Development, Software Development, Cybersecurity, IT Solutions, Tholumuzi Dev, Technology">
+  <meta name="author" content="Tholumuzi Khuboni">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:title" content="Tholumuzi Dev">
+  <meta property="og:description" content="Providing solutions in Web Development, Software Development, Cybersecurity, and more.">
+  <meta property="og:image" content="https://dev.tholumuzi.co.za/scr/tholumuzi-dev.jpg">
+  <meta property="og:url" content="https://dev.tholumuzi.co.za">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tholumuzi Dev">
+  <meta name="twitter:description" content="Providing solutions in Web Development, Software Development, Cybersecurity, and more.">
+  <meta name="twitter:image" content="https://dev.tholumuzi.co.za/scr/tholumuzi-dev.jpg">
+  <meta name="twitter:url" content="https://dev.tholumuzi.co.za">
+
+  <!-- Favicon -->
+  <link rel="icon" href="scr/favicon/logo-removebg-preview.png" type="image/png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      background-color: #282828;
+      color: #ffffff;
+      font-family: Consolas, monospace;
+      opacity: 0;
+      visibility: hidden;
+      animation: fadeIn 1s forwards;
+      animation-delay: 0.5s;
+    }
+
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #preloader .logo {
+      width: 100px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; visibility: hidden; }
+      100% { opacity: 1; visibility: visible; }
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #333333;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+      color: #66ff66;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: #ffcc00;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #ffcc00;
+      transition: color 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #1e1e1e, #444444);
+      animation: gradient 6s infinite;
+    }
+
+    .hero h1 {
+      color: #ffcc00;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero .btn {
+      background-color: #444444;
+      color: #ffcc00;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #ffcc00;
+      color: #282828;
+    }
+
+    @keyframes gradient {
+      0% { background: linear-gradient(135deg, #1e1e1e, #444444); }
+      50% { background: linear-gradient(135deg, #444444, #1e1e1e); }
+      100% { background: linear-gradient(135deg, #1e1e1e, #444444); }
+    }
+    
+    /* Social Icons */
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: #444444;
+      color: #ffffff;
+      margin: 0 5px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1);
+    }
+
+    .social-icons .linkedin:hover {
+      background-color: #0077b5;
+      color: #ffffff;
+    }
+
+    .social-icons .whatsapp:hover {
+      background-color: #25d366;
+      color: #ffffff;
+    }
+
+    .social-icons .facebook:hover {
+      background-color: #3b5998;
+      color: #ffffff;
+    }
+
+    .social-icons .instagram:hover {
+      background-color: #e4405f;
+      color: #ffffff;
+    }
+
+    .social-icons .github:hover {
+      background-color: #333333;
+      color: #ffffff;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 50px 20px;
+      background-color: #1e1e1e;
+      text-align: center;
+    }
+
+    .feature-card {
+      background-color: #333333;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 50px 20px;
+      background-color: #282828;
+      text-align: center;
+    }
+
+    .testimonial {
+      background-color: #444444;
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px auto;
+      max-width: 400px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #aaaaaa;
+      font-size: 0.9rem;
+      margin-top: 30px;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #444444;
+      color: #ffcc00;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #ffcc00;
+      color: #444444;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <img src="logo.png" alt="Tholumuzi Dev Logo" class="logo">
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Tholumuzi Dev</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:khuboni@tholumuzi.co.za"><i class="fas fa-envelope"></i> Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link download-cv" href="scr/cv/cv-tholumuzikuboni.pdf" download><i class="fas fa-download"></i> Download CV</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+  <h1>Tholumuzi Dev</h1>
+  <p>Providing solutions in Web Development, Software Development, Cybersecurity, and more.</p>
+  <div class="d-flex justify-content-center gap-3">
+    <a href="mailto:khuboni@tholumuzi.co.za" class="btn"><i class="fas fa-play"></i> Get in Touch</a>
+    <a href="scr/cv/cv-tholumuzikuboni.pdf" class="btn download-cv" download><i class="fas fa-download"></i> Download CV</a>
+  </div>
+  
+  <!-- Social Links -->
+  <div class="social-icons mt-4">
+    <a href="https://www.linkedin.com/in/tholumuzikhuboni" target="_blank" data-bs-toggle="tooltip" title="LinkedIn" class="linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://wa.me/27608941029" target="_blank" data-bs-toggle="tooltip" title="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/no.php?id=61560262494384" target="_blank" data-bs-toggle="tooltip" title="Facebook" class="facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/tholumuzikhuboni" target="_blank" data-bs-toggle="tooltip" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://github.com/tholumuzikhuboni" target="_blank" data-bs-toggle="tooltip" title="Github" class="github"><i class="fab fa-github"></i></a>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>&copy; 2024 Tholumuzi Dev | Created by <a href="https://www.tholumuzi.co.za" target="_blank">Tholumuzi Khuboni</a></p>
+</div>
+
+<script>
+
+  // Preloader logic
+  const preloader = document.getElementById('preloader');
+  window.addEventListener('load', () => {
+    preloader.style.display = 'none';
+  });
+  
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  const tooltipList = tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+  
+</script>
+</body>
+</html>
