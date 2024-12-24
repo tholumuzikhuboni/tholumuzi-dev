@@ -50,7 +50,34 @@
       flex-direction: column;
       min-height: 100vh;
     }
+    
+    /* Snowfall Animation */
+    @keyframes snowfall {
+    0% { top: -10%; }
+    100% { top: 100%; }
+    }
 
+    .snowflake {
+    position: absolute;
+    font-size: 25px;
+    z-index: 9999;
+    user-select: none;
+    animation: snowfall linear infinite;
+    }
+
+    /* Snowflake variations */
+    .snowflake:nth-child(odd) {
+    animation-duration: 10s;
+    animation-delay: -5s;
+    font-size: 20px;
+    }
+
+    .snowflake:nth-child(even) {
+    animation-duration: 12s;
+    animation-delay: -2s;
+    font-size: 18px;
+    }
+    
     /* Preloader Styles */
     #preloader {
       position: fixed;
@@ -260,13 +287,12 @@
     <div class="modal-content bg-dark text-light">
       <div class="modal-header">
         <h5 class="modal-title d-flex align-items-center" id="enquiryModalLabel">
-          <i class="bi bi-envelope-fill me-2 text-warning"></i> Contact Me
+          <i class="bi bi-chat-dots-fill me-2 text-warning"></i> Contact Me
         </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="enquiryForm" action="https://formspree.io/f/xgveoyla" method="POST">
-          <!-- Name Input with Icon -->
           <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
             <div class="input-group">
@@ -274,7 +300,6 @@
               <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
             </div>
           </div>
-          <!-- Email Input with Icon -->
           <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
             <div class="input-group">
@@ -282,7 +307,6 @@
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
           </div>
-          <!-- Message Input with Icon -->
           <div class="mb-3">
             <label for="message" class="form-label">Message</label>
             <div class="input-group">
@@ -290,7 +314,7 @@
               <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
             </div>
           </div>
-          <!-- Submit Button -->
+
           <div class="modal-footer d-flex justify-content-start p-0 mt-3">
             <button type="submit" class="btn btn-warning ms-auto d-flex align-items-center">
               Send Message <i class="ms-2 bi bi-send"></i>
@@ -302,6 +326,44 @@
     </div>
   </div>
 </div>
+
+<!-- Snowflakes -->
+<div id="snowflakes"></div>
+
+<script>
+  // Function to create snowflakes
+  function createSnowflakes() {
+    const snowflakesContainer = document.getElementById("snowflakes");
+    const numberOfSnowflakes = 40;
+
+    const themeYellow = "#FFD700"; 
+
+    for (let i = 0; i < numberOfSnowflakes; i++) {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+
+    
+      const size = Math.random() * 15 + 10;
+      const positionLeft = Math.random() * 100;
+      const animationDuration = Math.random() * 5 + 10;
+
+      const colors = ["green", "red", themeYellow];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      snowflake.style.color = randomColor;
+
+      snowflake.style.fontSize = `${size}px`;
+      snowflake.style.left = `${positionLeft}%`;
+      snowflake.style.animationDuration = `${animationDuration}s`;
+
+      snowflake.innerHTML = "❄";
+
+      snowflakesContainer.appendChild(snowflake);
+    }
+  }
+
+  window.onload = createSnowflakes;
+</script>
+
 <!-- Footer -->
 <div class="footer">
   <p>&copy; 2024 Tholumuzi Dev | Created by <a href="https://www.tholumuzi.co.za" target="_blank">Tholumuzi Khuboni</a></p>
@@ -323,7 +385,7 @@
   const successMessage = document.getElementById("successMessage");
 
   form.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
     const formData = new FormData(form);
 
     try {
@@ -336,19 +398,18 @@
       });
 
       if (response.ok) {
-        successMessage.style.display = "block"; // Show success message
+        successMessage.style.display = "block";
         successMessage.innerText = "Enquiry sent successfully!";
-        successMessage.style.color = "#ffc107"; // Yellow color
-        successMessage.style.backgroundColor = "#333"; // Dark background
+        successMessage.style.color = "#ffc107";
+        successMessage.style.backgroundColor = "#333";
         successMessage.style.padding = "10px";
         successMessage.style.borderRadius = "5px";
         successMessage.style.width = "fit-content";
-        successMessage.style.margin = "0 auto"; // Center align
+        successMessage.style.margin = "0 auto"; 
         successMessage.style.fontWeight = "bold";
         
-        form.reset(); // Reset the form
+        form.reset(); 
 
-        // Hide success message after 3 seconds
         setTimeout(() => {
           successMessage.style.display = "none";
         }, 3000);
@@ -360,6 +421,7 @@
     }
   });
 });
+
 </script>
 </body>
 </html>
