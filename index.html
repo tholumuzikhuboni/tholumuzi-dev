@@ -259,24 +259,38 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-dark text-light">
       <div class="modal-header">
-        <h5 class="modal-title" id="enquiryModalLabel">Contact Me</h5>
+        <h5 class="modal-title d-flex align-items-center" id="enquiryModalLabel">
+          <i class="bi bi-envelope-fill me-2 text-warning"></i> Contact Me
+        </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="enquiryForm" action="https://formspree.io/f/xgveoyla" method="POST">
+          <!-- Name Input with Icon -->
           <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+            <div class="input-group">
+              <span class="input-group-text bg-dark text-warning"><i class="bi bi-person"></i></span>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
           </div>
+          <!-- Email Input with Icon -->
           <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            <div class="input-group">
+              <span class="input-group-text bg-dark text-warning"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
           </div>
+          <!-- Message Input with Icon -->
           <div class="mb-3">
             <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
+            <div class="input-group">
+              <span class="input-group-text bg-dark text-warning"><i class="bi bi-chat-dots"></i></span>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
+            </div>
           </div>
-          <!-- Added spacing between message and button -->
+          <!-- Submit Button -->
           <div class="modal-footer d-flex justify-content-start p-0 mt-3">
             <button type="submit" class="btn btn-warning ms-auto d-flex align-items-center">
               Send Message <i class="ms-2 bi bi-send"></i>
@@ -322,21 +336,22 @@
       });
 
       if (response.ok) {
-        successMessage.style.display = "block"; 
+        successMessage.style.display = "block"; // Show success message
         successMessage.innerText = "Enquiry sent successfully!";
-        successMessage.style.color = "#ffc107";
-        successMessage.style.backgroundColor = "#333";
+        successMessage.style.color = "#ffc107"; // Yellow color
+        successMessage.style.backgroundColor = "#333"; // Dark background
         successMessage.style.padding = "10px";
         successMessage.style.borderRadius = "5px";
         successMessage.style.width = "fit-content";
-        successMessage.style.margin = "0 auto";
+        successMessage.style.margin = "0 auto"; // Center align
         successMessage.style.fontWeight = "bold";
         
-        form.reset();
+        form.reset(); // Reset the form
 
+        // Hide success message after 3 seconds
         setTimeout(() => {
           successMessage.style.display = "none";
-        }, 5000);
+        }, 3000);
       } else {
         alert("There was an error sending your message. Please try again.");
       }
