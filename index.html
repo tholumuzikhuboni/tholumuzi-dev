@@ -6,6 +6,7 @@
   <title>Tholumuzi Dev</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <!-- Meta Tags for SEO -->
   <meta name="description" content="Tholumuzi Dev provides solutions in Web Development, Software Development, Cybersecurity, and more.">
   <meta name="keywords" content="Web Development, Software Development, Cybersecurity, IT Solutions, Tholumuzi Dev, Technology">
@@ -180,43 +181,7 @@
       background-color: #333333;
       color: #ffffff;
     }
-
-    /* Features Section */
-    .features {
-      padding: 50px 20px;
-      background-color: #1e1e1e;
-      text-align: center;
-    }
-
-    .feature-card {
-      background-color: #333333;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Testimonials */
-    .testimonials {
-      padding: 50px 20px;
-      background-color: #282828;
-      text-align: center;
-    }
-
-    .testimonial {
-      background-color: #444444;
-      color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 10px auto;
-      max-width: 400px;
-    }
-
+    
     /* Footer */
     .footer {
       text-align: center;
@@ -237,25 +202,7 @@
     .footer a:hover {
       text-decoration: underline;
     }
-
-    /* Dark Mode Toggle */
-    .dark-mode-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #444444;
-      color: #ffcc00;
-      border: none;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .dark-mode-toggle:hover {
-      background-color: #ffcc00;
-      color: #444444;
-    }
+    
   </style>
 </head>
 <body>
@@ -293,7 +240,7 @@
   <h1>Tholumuzi Dev</h1>
   <p>Providing solutions in Web Development, Software Development, Cybersecurity, and more.</p>
   <div class="d-flex justify-content-center gap-3">
-    <a href="mailto:khuboni@tholumuzi.co.za" class="btn"><i class="fas fa-play"></i> Get in Touch</a>
+    <button class="btn" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="fas fa-envelope"></i> Contact Me</button>
     <a href="scr/cv/cv-tholumuzikuboni.pdf" class="btn download-cv" download><i class="fas fa-download"></i> Download CV</a>
   </div>
   
@@ -307,6 +254,40 @@
   </div>
 </div>
 
+<!-- Enquiry Modal -->
+<div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enquiryModalLabel">Contact Me</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="enquiryForm" action="https://formspree.io/f/xgveoyla" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
+          </div>
+          <!-- Added spacing between message and button -->
+          <div class="modal-footer d-flex justify-content-start p-0 mt-3">
+            <button type="submit" class="btn btn-warning ms-auto d-flex align-items-center">
+              Send Message <i class="ms-2 bi bi-send"></i>
+            </button>
+          </div>
+          <p id="successMessage" class="text-center mt-3" style="display: none;"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Footer -->
 <div class="footer">
   <p>&copy; 2024 Tholumuzi Dev | Created by <a href="https://www.tholumuzi.co.za" target="_blank">Tholumuzi Khuboni</a></p>
@@ -323,6 +304,47 @@
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   const tooltipList = tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
   
+  document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("enquiryForm");
+  const successMessage = document.getElementById("successMessage");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevent default form submission
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        successMessage.style.display = "block"; 
+        successMessage.innerText = "Enquiry sent successfully!";
+        successMessage.style.color = "#ffc107";
+        successMessage.style.backgroundColor = "#333";
+        successMessage.style.padding = "10px";
+        successMessage.style.borderRadius = "5px";
+        successMessage.style.width = "fit-content";
+        successMessage.style.margin = "0 auto";
+        successMessage.style.fontWeight = "bold";
+        
+        form.reset();
+
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 5000);
+      } else {
+        alert("There was an error sending your message. Please try again.");
+      }
+    } catch (error) {
+      alert("There was a network error. Please try again.");
+    }
+  });
+});
 </script>
 </body>
 </html>
