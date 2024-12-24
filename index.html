@@ -327,6 +327,35 @@
   </div>
 </div>
 
+<!-- Merry Christmas Popup Modal -->
+<div class="modal fade" id="christmasModal" tabindex="-1" aria-labelledby="christmasModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-warning d-flex align-items-center" id="christmasModalLabel">
+          <i class="bi bi-tree-fill me-2 text-success"></i> Merry Christmas!
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h4 class="text-warning mb-2">🎄 Wishing You Joy & Happiness! 🎁</h4>
+        <p class="mb-3">Thank you for visiting Tholumuzi Dev! Have a festive holiday season filled with love and success. 🎅✨</p>
+        <button class="btn btn-warning px-3" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Christmas Popup
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const christmasModal = new bootstrap.Modal(document.getElementById("christmasModal"));
+      christmasModal.show();
+    }, 3000);
+  });
+</script>
+
 <!-- Snowflakes -->
 <div id="snowflakes"></div>
 
