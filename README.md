@@ -15,7 +15,7 @@ Welcome to the Tholumuzi Dev repository! Tholumuzi Dev provides solutions in Web
 
 ## Demo
 
-Check out the live demo [here](https://dev.tholumuzi.co.za). (Add link if available)
+Check out the live demo [here](https://dev.tholumuzi.co.za).
 
 ## Installation
 
